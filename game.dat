@@ -1,0 +1,45 @@
+int[][] board = new int[9][9]; // Sudoku board
+
+void setup() {
+  size(450, 450); // Set the size of the window
+  noLoop(); // Draw only once
+  generateBoard(); // Generate a sample board
+}
+
+void draw() {
+  background(255); // Set background color to white
+  drawGrid(); // Draw the grid
+  drawNumbers(); // Display the numbers
+}
+
+// Function to draw the Sudoku grid
+void drawGrid() {
+  stroke(0); // Set stroke color to black
+  for (int i = 0; i < 10; i++) {
+    strokeWeight(i % 3 == 0 ? 4 : 1); // Make the block borders thicker
+    line(i * 50, 0, i * 50, height); // Draw vertical lines
+    line(0, i * 50, width, i * 50); // Draw horizontal lines
+  }
+}
+
+// Function to draw numbers on the Sudoku board
+void drawNumbers() {
+  textSize(32); // Set text size for numbers
+  for (int i = 0; i < 9; i++) {
+    for (int j = 0; j < 9; j++) {
+      if (board[i][j] != 0) { // Check if there is a number in the cell
+        fill(0); // Set text color to black
+        text(board[i][j], j * 50 + 15, i * 50 + 35); // Display the number
+      }
+    }
+  }
+}
+
+// Function to generate a sample Sudoku board
+void generateBoard() {
+  // Insert sample numbers
+  board[0][0] = 5;
+  board[1][1] = 3;
+  board[4][4] = 7;
+  // ... (Add more sample numbers as needed)
+}
